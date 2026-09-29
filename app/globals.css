@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------
+   SpaceSync design tokens
+   پالت برگرفته از پرزنتیشن: سرمه‌ای عمیق + سبز-فیروزه‌ای
+   --------------------------------------------------------- */
+:root {
+  --radius: 0.75rem;
+
+  /* برند */
+  --ink: #14243f; /* سرمه‌ای اصلی، هدر و متن تیره */
+  --ink-soft: #24365a; /* سرمه‌ای روشن‌تر برای متن ثانویه */
+  --teal: #0e9c86; /* اکسنت اصلی */
+  --teal-dark: #0a7a68;
+  --teal-wash: #e6f5f2; /* پس‌زمینه ملایم سبز */
+  --paper: #f3f6fa; /* پس‌زمینه صفحه */
+
+  /* وضعیت صندلی */
+  --seat-free: #0e9c86;
+  --seat-occupied: #c8453c;
+  --seat-reserved: #d9922b;
+
+  /* توکن‌های shadcn */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: #ffffff;
+  --secondary: #e7ecf3;
+  --secondary-foreground: var(--ink);
+  --muted: #e7ecf3;
+  --muted-foreground: #64748b;
+  --accent: var(--teal-wash);
+  --accent-foreground: var(--teal-dark);
+  --destructive: var(--seat-occupied);
+  --border: #dbe3ed;
+  --input: #dbe3ed;
+  --ring: var(--teal);
+}
+
+.dark {
+  --ink: #e8eef7;
+  --paper: #0d1526;
+  --teal-wash: #12312c;
+
+  --background: #0d1526;
+  --foreground: #e8eef7;
+  --card: #14203a;
+  --card-foreground: #e8eef7;
+  --popover: #14203a;
+  --popover-foreground: #e8eef7;
+  --primary: #e8eef7;
+  --primary-foreground: #14243f;
+  --secondary: #1d2c4a;
+  --secondary-foreground: #e8eef7;
+  --muted: #1d2c4a;
+  --muted-foreground: #93a3bb;
+  --accent: #12312c;
+  --accent-foreground: #4ecfb8;
+  --border: #25365a;
+  --input: #25365a;
+  --ring: var(--teal);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+  --color-teal-wash: var(--teal-wash);
+  --color-seat-free: var(--seat-free);
+  --color-seat-occupied: var(--seat-occupied);
+  --color-seat-reserved: var(--seat-reserved);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-vazir);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss02" on;
+  }
+  /* اعداد فارسی در کل سایت */
+  .nums-fa {
+    font-variant-numeric: normal;
+  }
+}
+
+/* نوار باریک بالای کارت‌ها، همان لهجه‌ی بصری اسلایدها */
+.rule-top {
+  border-block-start: 3px solid var(--teal);
+}
+.rule-top-warn {
+  border-block-start: 3px solid var(--seat-reserved);
+}
+.rule-top-bad {
+  border-block-start: 3px solid var(--seat-occupied);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
